@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/choose/choose",
+    "pages/queue/queue",
+    "pages/logs/logs",
+    "pages/HUAWEI/HUAWEI",
+    "pages/sorting/sorting"
+  ],
+  "tabBar": {
+    "selectedColor": "#31869B",
+    "list": [
+      {
+        
+        "pagePath": "pages/choose/choose",
+        "text": "打包"
+        
+      },
+      {
+        
+        "pagePath": "pages/queue/queue",
+        "text": "分拣"
+        
+      }
+    ]
+  },
+
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "电子元器件分拣系统",
+    "navigationBarBackgroundColor": "#2b4b6b"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

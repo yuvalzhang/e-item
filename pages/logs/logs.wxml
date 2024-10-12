@@ -1,0 +1,27 @@
+<!--logs.wxml-->
+<!-- <scroll-view class="scrollarea" scroll-y type="list">
+  <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log">
+    <view class="log-item">{{index + 1}}. {{log.date}}</view>
+  </block>
+</scroll-view> -->
+<view class="packingBox" >打包成功!
+  <view class="info">请等待机械臂进行打包</view>
+  
+<view class="more-info">打包日期:{{dateID}}
+
+<!-- <view>打包日期:
+  <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log" wx:if="{{index<1}}">
+    <view class="log-item">{{log.date}}</view>
+  </block>
+</view> -->
+
+<view>打包的元器件:
+<scroll-view class="scrollarea" scroll-y type="list">
+    <text class="cart-content" wx:for="{{content}}">
+      {{item.e_ID}}:{{item.quantity}}件
+    </text>
+</scroll-view>
+</view>
+
+</view>
+</view>

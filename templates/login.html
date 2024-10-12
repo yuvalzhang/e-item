@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>用户登录</title>
+    <!-- <link rel="stylesheet" href="assets/css/login.css"> -->
+    <!-- <script src="../js/jquery-3.6.0.min.js"></script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 设置body高度为100%窗口高度 */
+            height: 100vh;
+            /* 弹性盒子模型 */
+            display: flex;
+            /* 限免两个属性是让body里的子类居中 */
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .image-container {
+            flex: 1;
+            /* 默认情况下图片容器占满剩余空间 */
+            overflow: hidden;
+            /* 隐藏超出部分 */
+        }
+
+        .image-container img {
+            height: 100%;
+            /* 图片高度自适应 */
+        }
+
+        .login-container {
+            margin-top: 280px;
+            margin-left: 80px;
+            flex-basis: 30%;
+            /* 登录界面默认宽度 */
+            background-color: #ffffff;
+            /* 登录界面背景颜色 */
+        }
+
+        .title {
+            margin-left: 70px;
+        }
+
+        .tbx {
+            margin: 20px;
+            font-size: 16px;
+            height: 50px;
+            width: 400px;
+            border: none;
+        }
+
+        .sub {
+            margin-left: 110px;
+            height: 50px;
+            width: 200px;
+            background-color: #4080ff;
+            color: #ffffff;
+            font-size: large;
+            border-radius: 10px;
+            border: none;
+        }
+
+
+        /*===== 谷歌字体 =====*/
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container" id="imageContainer">
+            <img src="http://8.138.165.162:5000/image">
+        </div>
+        <div class="login-container" id="loginContainer">
+            <h1 class="title">电子元器件分拣系统</h1>
+            <form name="form" id="form" action="http://8.138.165.162:5000/api/check" method="post">
+                <input type="text" class="tbx" placeholder="账号" name="username" id="username">
+                <input type="password" class="tbx" placeholder="密码" name="password" id="password">
+                <input type="submit" class="sub" value="登录" onclick="check()">
+            </form>
+        </div>
+    </div>
+
+    <!-- 引入icon -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script>
+        function check() {
+            var form = document.getElementById('form');
+            if (form.username.value == "") {
+                alert("请输入用户名！");
+                form.username.focus();
+                return;
+            }
+            else if (form.password.value == "") {
+                alert("请输入密码！");
+                form.password.focus();
+                return;
+            }
+            else {
+                // form.method = "post";
+                form.submit();
+            }
+        }
+    </script>
+</body>
+
+</html>

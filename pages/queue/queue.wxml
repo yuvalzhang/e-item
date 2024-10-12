@@ -1,0 +1,12 @@
+
+<view class="sorting">
+
+<view class="sortingBox">
+<view>
+请把要归还的电子元器件放到指定位置
+</view>
+
+<button bind:tap="sorting" class="sortingButton">开始分拣</button>
+</view>
+
+</view>

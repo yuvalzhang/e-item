@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== 引入 ===== -->
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
+    <style>
+        /*===== 谷歌字体 =====*/
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+        /*===== css变量老师家哦 =====*/
+        :root {
+            --nav-width: 92px;
+
+            /*===== 自定义颜色 =====*/
+            --first-color: #0C5DF4;
+            --bg-color: #12192C;
+            --sub-color: #B6CEFC;
+            --white-color: #FFF;
+
+            /*===== 规定字体  =====*/
+            --body-font: 'Poppins', sans-serif;
+            --normal-font-size: 1rem;
+            --small-font-size: .875rem;
+
+            /*===== 设置z-index =====*/
+            --z-fixed: 100;
+        }
+
+
+        /*===== 基础规定 =====*/
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            margin: 0;
+            padding: 2rem 0 0 6.75rem;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            transition: .5s;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /*===== 左侧 nav =====*/
+        .l-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--nav-width);
+            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--white-color);
+            padding: 1.5rem 1.5rem 2rem;
+            transition: .5s;
+            z-index: var(--z-fixed);
+        }
+
+        /*===== NAV =====*/
+        .nav {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .nav__brand {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav__toggle {
+            font-size: 1.25rem;
+            padding: .75rem;
+            cursor: pointer;
+        }
+
+        .nav__logo {
+            color: var(--white-color);
+            font-weight: 600;
+        }
+
+        .nav__link {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            column-gap: .75rem;
+            padding: .75rem;
+            color: var(--white-color);
+            border-radius: .5rem;
+            margin-bottom: 1rem;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .nav__link:hover {
+            background-color: var(--first-color);
+        }
+
+        .nav__icon {
+            font-size: 1.25rem;
+        }
+
+        .nav__name {
+            font-size: var(--small-font-size);
+        }
+
+        /*菜单控件*/
+        .expander {
+            width: calc(var(--nav-width) + 9.25rem);
+        }
+
+        /*给body增加边距*/
+        .body-pd {
+            padding: 2rem 0 0 16rem;
+        }
+
+        /*选中的菜单状态*/
+        .active {
+            background-color: var(--first-color);
+        }
+
+        .collapse {
+            grid-template-columns: 20px max-content 1fr;
+        }
+
+        .collapse__link {
+            justify-self: flex-end;
+            transition: .5s;
+        }
+
+        .collapse__menu {
+            display: none;
+            padding: .75rem 2.25rem;
+        }
+
+        .collapse__sublink {
+            color: var(--sub-color);
+            font-size: var(--small-font-size);
+        }
+
+        .collapse__sublink:hover {
+            color: var(--white-color);
+        }
+
+        .showCollapse {
+            display: block;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        table {
+            width: 95%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: none;
+        }
+
+        th,
+        td {
+
+            padding: 8px;
+            text-align: left;
+            background-color: #fff;
+            color: #000000;
+            /* border-radius: 5px; */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .status-cell {
+            text-transform: capitalize;
+
+        }
+
+        .highlight {
+            background-color: #ffcc00;
+        }
+
+        .refresh {
+            margin-left: 15px;
+            height: 50px;
+            width: 200px;
+            background-color: #4080ff;
+            color: #ffffff;
+            font-size: large;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+
+    <title>电子元器件分拣系统</title>
+    <!-- 127.0.0.1:5000/api/history_data -->
+</head>
+
+<body id="body-pd">
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                    <!-- <a href="#" class="nav__logo">八爪鱼</a> -->
+                </div>
+                <div class="nav__list">
+                    <a href="#" class="nav__link active">
+                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <span class="nav__name">主页</span>
+                    </a>
+
+                    <a href="./history_data/statistic" class="nav__link">
+                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                        <span class="nav__name">统计图表</span>
+                    </a>
+                    <a href="#" class="nav__link">
+                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <span class="nav__name">设置</span>
+                    </a>
+                </div>
+            </div>
+            <!-- ./history_data/login.html -->
+            <a href="./logout" class="nav__link">
+                <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                <span class="nav__name">退出登陆</span>
+            </a>
+        </nav>
+    </div>
+
+    <h1>电子元器件分拣系统</h1>
+    <button onclick="refreshPage()" class="refresh">刷新</button>
+    <div class="data_container">
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>状态</th>
+                    <th>打包的元器件套数</th>
+                    <th>LED</th>
+                    <th>R1</th>
+                    <th>R2</th>
+                    <th>R3</th>
+                    <th>三极管</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data|reverse %}
+                <tr>
+                    <!-- 第一列数据 -->
+                    <td>{{ row[0] }}</td>
+                    <!-- 第二列数据 -->
+                    <td class="status-cell">
+                        {% if row[2] == None%}
+                        分拣
+                        {% elif row[1] == 1 %}
+                        打包
+                        {% elif row[1] == 0 %}
+                        分拣
+                        {% else %}
+                        {{ row[1] }}
+                        {% endif %}
+                    </td>
+                    <!-- 第三列数据 -->
+                    <td>
+                        {% if row[2] == None %}
+                        0
+                        {% else%}
+                        {{ row[2] }}
+                        {% endif %}
+
+                    </td>
+                    <!-- 第四列至最后一列数据 -->
+                    <td>{% if row[2] == None %}{% else %}{{ row[3] }}{% endif %}</td>
+                    <td>{% if row[2] == None %}{% else %}{{ row[4] }}{% endif %}</td>
+                    <td>{% if row[2] == None %}{% else %}{{ row[5] }}{% endif %}</td>
+                    <td>{% if row[2] == None %}{% else %}{{ row[6] }}{% endif %}</td>
+                    <td>{% if row[2] == None %}{% else %}{{ row[7] }}{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- ===== 引入icon ===== -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+    <!-- ===== 引入js 和 chart.js===== -->
+    <script>
+
+        function refreshPage() {
+            window.location.reload(); // 刷新当前页面
+        }
+
+
+    </script>
+</body>
+
+</html>
