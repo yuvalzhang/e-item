@@ -3,7 +3,6 @@
     "pages/choose/choose",
     "pages/queue/queue",
     "pages/logs/logs",
-    "pages/HUAWEI/HUAWEI",
     "pages/sorting/sorting"
   ],
   "tabBar": {
